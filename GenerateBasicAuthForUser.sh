@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
   exit
 fi
 
-echo $(htpasswd -nB $1) | sed -e s/\\$/\\$\\$/g
+echo $(htpasswd -nB $1)
