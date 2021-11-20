@@ -1,0 +1,50 @@
+checkNewVersion = false
+sendAnonymousUsage = false
+logLevel = "INFO"
+
+[docker]
+  endpoint = "unix:///var/run/docker.sock"
+  exposedByDefault = false
+
+[api]
+  insecure = true
+  dashboard = true
+  entrypoint = "dashboard"
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+
+    [entryPoints.http.redirect]
+      entryPoint = "https"
+
+  [entryPoints.https]
+    address = ":443"
+
+    [entryPoints.https.tls]
+
+  [entryPoints.dashboard]
+    address = ":8080"
+
+    # for example username & password: admin / admin
+    # You can execute GenerateBasicAuth.sh to generate token string and write here.
+    [entryPoints.dashboard.auth.basic]
+      users = [
+        "admin:$$2y$$05$$bDiBYJBdpiR2tzf.xFy9aea973Y9gKlldcG6TS5IwdqS.gUvVr5/u"
+      ]
+
+[acme]
+  # if want to use on production, remove '-staging' in url.
+  caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+
+  entryPoint = "https"
+  acmeLogging = true
+
+  email = "{{YOUR_CONTACT_EMAIL}}"
+  storage = "acme.json"
+
+  onHostRule = true
+
+  [acme.httpChallenge]
+    entryPoint = "http"
+

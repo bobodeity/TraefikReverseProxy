@@ -1,0 +1,29 @@
+version: "3.8"
+
+networks:
+  TraefikReverseProxy:
+    driver: bridge
+
+services:
+  traefik-reverse-proxy:
+    container_name: traefik-reverse-proxy
+    image: traefik:alpine
+    build:
+      context: .
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./conf/traefik.toml:/etc/traefik/traefik.toml
+      - ./conf/acme.json:/acme.json
+    networks:
+      - TraefikReverseProxy
+    ports:
+      - 80:80
+      - 443:443
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=Host:{{YOUR_HOST_DOMAIN}}"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.passHostHeader=true"
+
