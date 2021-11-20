@@ -30,7 +30,7 @@ logLevel = "INFO"
     # You can execute GenerateBasicAuth.sh to generate token string and write here.
     [entryPoints.dashboard.auth.basic]
       users = [
-        "admin:$$2y$$05$$bDiBYJBdpiR2tzf.xFy9aea973Y9gKlldcG6TS5IwdqS.gUvVr5/u"
+        "admin:$2y$05$bDiBYJBdpiR2tzf.xFy9aea973Y9gKlldcG6TS5IwdqS.gUvVr5/u"
       ]
 
 [acme]
