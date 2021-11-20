@@ -3,6 +3,7 @@ version: "3.8"
 networks:
   TraefikReverseProxy:
     driver: bridge
+    external: true
 
 services:
   traefik-reverse-proxy:
