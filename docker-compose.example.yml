@@ -8,8 +8,6 @@ services:
   traefik-reverse-proxy:
     container_name: traefik-reverse-proxy
     image: traefik:alpine
-    build:
-      context: .
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
