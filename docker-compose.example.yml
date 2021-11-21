@@ -14,6 +14,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./conf/traefik.toml:/etc/traefik/traefik.toml
       - ./conf/acme.json:/acme.json
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5k"
+        max-file: "3"
     networks:
       - TraefikReverseProxy
     ports:
