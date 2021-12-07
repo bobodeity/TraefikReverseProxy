@@ -24,7 +24,7 @@
     $ sh InitialCertificate.sh  
       
     # for docker-compose network share with traefik or another services.  
-    $ sh InitialTraefikReverseProxyNetwork.sh  
+    $ sudo sh InitialTraefikReverseProxyNetwork.sh  
     ```  
   
 5. Startup traefik service.  
