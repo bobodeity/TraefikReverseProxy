@@ -17,6 +17,8 @@
   
 - Setting dashboard BasicAuth users (you can execute GenerateBasicAuthForUser.sh), or comment the BasicAuth block (not security).  
   
+  > if htpasswd not found, you can execute this command to install it. `sudo apt-get install apache2-utils`
+  
 4. Execute the shell script.  
   
     ```  
