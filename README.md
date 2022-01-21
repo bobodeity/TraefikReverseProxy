@@ -34,3 +34,22 @@
     ```  
     $ docker-compose up -d  
     ```  
+  
+# Check certificate & deploy
+
+1. If your certificate have been generated and setting are correct, then initial your staging certificate.
+
+    ```  
+    # for Let's Encrypt certificate reset  
+    $ sh InitialCertificate.sh  
+    ```  
+  
+2. Edit conf/traefik.toml  
+  
+- Remove word `staging-` in `caServer` url.  
+  
+3. Restart your traefik service.
+  
+    ```  
+    $ docker-compose restart
+    ```  
