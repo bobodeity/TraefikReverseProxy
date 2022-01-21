@@ -46,7 +46,7 @@
   
 2. Edit conf/traefik.toml  
   
-- Remove word `staging-` in `caServer` url.  
+- Remove word `-staging` in `caServer` url.  
   
 3. Restart your traefik service.
   
