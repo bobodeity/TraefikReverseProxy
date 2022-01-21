@@ -35,7 +35,7 @@
     $ docker-compose up -d  
     ```  
   
-# Check certificate & deploy
+# Check certificate & deploy traefik service  
 
 1. If your certificate have been generated and setting are correct, then initial your staging certificate.
 
@@ -52,4 +52,26 @@
   
     ```  
     $ docker-compose restart
+    ```  
+  
+# Deploy other services using docker-compose  
+  
+1. Add the service to networks same as traefik. 
+  
+    ```  
+    networks:
+      TraefikReverseProxy:
+        driver: bridge
+        external: true
+    ```  
+  
+2. Add the service labels for traefik identify, then done !!
+  
+    ```  
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=15672"
+      - "traefik.frontend.rule=Host:rabbitmq.example.com"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.passHostHeader=true"
     ```  
